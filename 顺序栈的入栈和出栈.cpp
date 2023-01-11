@@ -1,43 +1,43 @@
 #include<iostream>
-#define Max 100//Ë³ĞòÕ»´æ´¢¿Õ¼ä³õÊ¼·ÖÅäÁ¿
+#define Max 100//é¡ºåºæ ˆå­˜å‚¨ç©ºé—´åˆå§‹åˆ†é…é‡
 using namespace std;
 struct Stack
 {
-	int* top;//Õ»¶¥Ö¸Õë
-	int* base;//Õ»µ×Ö¸Õë
-	int maxsize;//Õ»¿ÉÓÃ×î´óÈİÁ¿
+	int* top;//æ ˆé¡¶æŒ‡é’ˆ
+	int* base;//æ ˆåº•æŒ‡é’ˆ
+	int maxsize;//æ ˆå¯ç”¨æœ€å¤§å®¹é‡
 };
-void init_stack(Stack* S);//Ë³ĞòÕ»µÄ³õÊ¼»¯
-void push_stack(Stack* S, int n);//ÈëÕ»²Ù×÷
-void travel_stack(Stack* S);//±éÀú²¢Êä³öÕ»ÖĞµÄÔªËØ
-void pop_stack(Stack* S);//³öÕ»
+void init_stack(Stack* S);//é¡ºåºæ ˆçš„åˆå§‹åŒ–
+void push_stack(Stack* S, int n);//å…¥æ ˆæ“ä½œ
+void travel_stack(Stack* S);//éå†å¹¶è¾“å‡ºæ ˆä¸­çš„å…ƒç´ 
+void pop_stack(Stack* S);//å‡ºæ ˆ
 int main()
 {
 	Stack S;
-	init_stack(&S);//´«ÈëµØÖ·
+	init_stack(&S);//ä¼ å…¥åœ°å€
 	push_stack(&S, 1);
 	push_stack(&S, 2);
 	push_stack(&S, 3);
 	push_stack(&S, 4);
 	push_stack(&S, 5);
 	push_stack(&S, 6);
-	cout << "Õ»ÖĞÔªËØÓĞ£º" << endl;
+	cout << "æ ˆä¸­å…ƒç´ æœ‰ï¼š" << endl;
 	travel_stack(&S);
 	pop_stack(&S);
 	pop_stack(&S);
-	cout << "³öÕ»ºóÔªËØÓĞ£º" << endl;
+	cout << "å‡ºæ ˆåå…ƒç´ æœ‰ï¼š" << endl;
 	travel_stack(&S);
 	return 0;
 }
 void init_stack(Stack* S)
 {
-	S->base = new int[Max];//¸øË³ĞòÕ»¶¯Ì¬·ÖÅäÒ»¸ö×î´óÈİÁ¿ÎªMaxµÄÊı×é
+	S->base = new int[Max];//ç»™é¡ºåºæ ˆåŠ¨æ€åˆ†é…ä¸€ä¸ªæœ€å¤§å®¹é‡ä¸ºMaxçš„æ•°ç»„
 	if (!S->base)
 	{
-		cout << "ÄÚ´æ·ÖÅäÊ§°Ü£¡½áÊø³ÌĞò£¡";
+		cout << "å†…å­˜åˆ†é…å¤±è´¥ï¼ç»“æŸç¨‹åºï¼";
 		exit(-1);
 	}
-	S->top = S->base;//top³õÊ¼»¯Îªbase±íÊ¾Îª¿ÕÕ»
+	S->top = S->base;//topåˆå§‹åŒ–ä¸ºbaseè¡¨ç¤ºä¸ºç©ºæ ˆ
 	S->maxsize = Max;
 	return;
 }
@@ -45,11 +45,12 @@ void push_stack(Stack* S, int n)
 {
 	if (S->top - S->base == S->maxsize)
 	{
-		cout << "Õ»Âú" << endl;
+		cout << "æ ˆæ»¡" << endl;
 		return;
 	}
+	*S->top=n;
 	S->top++;
-	*S->top = n;
+	
 	return;
 }
 void travel_stack(Stack* S)
@@ -67,7 +68,7 @@ void pop_stack(Stack* S)
 {
 	if (S->top == S->base)
 	{
-		cout << "¿ÕÕ»" << endl;
+		cout << "ç©ºæ ˆ" << endl;
 		return;
 	}
 	S->top--;
