@@ -48,9 +48,8 @@ void push_stack(Stack* S, int n)
 		cout << "栈满" << endl;
 		return;
 	}
-	*S->top=n;
 	S->top++;
-	
+	*S->top=n;
 	return;
 }
 void travel_stack(Stack* S)
